@@ -1,0 +1,92 @@
+Descargar proyecto de Github
+git clone https://github.com/amgdark/CursoJiapazLaravel.git
+
+git clone https://github.com/amgdark/CursoJiapazLaravel.git
+
+composer update
+cp .env.example .env
+php artisan key:generate
+
+realizar configuraciones de BD
+php artisan migrate
+
+
+
+Poner en boostrap los errores
+
+Buscar todas las validaciones creadas por laravel 
+
+
+Crear una clase especial para los Request y validar
+	make:request
+	poner la importanción y remplazar el request en el controlador
+
+
+Responses
+	regresar un contenido, un código y un ->header ->cookie
+	regresar un json
+		response()->json(['data' => $data], estatus)->header
+
+	redirect('ruta')
+	redirect()->route('saludos')
+
+	variable sesión
+		redirect()->route('saludos')->with('info','rollo')
+
+		en la página redireccionada verificar la variable (las variables sólo está disponible en el siguiente request)
+			@if(session()->has('info'))
+				{{ session('info') }}
+
+		back()->->with('info','rollo') // regresa a la ruta que lo mandó llamar
+
+
+Variables de entorno config -> .env
+
+Base de datos:
+	config->database.php
+	agregar las credenciales en env para la BD
+	crear un BD 
+
+	migraciones -> control de versiones
+	mirgaciones por defecto
+		métodos up y down
+
+	migrate -> ejecuta las migraciones método up
+	migrate:rollback -> ejecuta las migraciones método down
+
+	crear migración para mensajes
+		make: migration crea_tabla_mensaje --create=mensajes
+			$table->string('nombre')    //todos los tipos de campos en documentación
+			$table->string('mail')    //todos los tipos de campos en documentación
+			$table->text('mensaje')    //todos los tipos de campos en documentación
+
+		migrate
+		
+		para agregar algún campo extra o modificar, se tendría que agregar en el método up, ahcer un rollback y enseguida un migrate (esto borra los datos)
+
+		agregar otra migración con el nombre agrega_telefono_mensaje (--table=mensaje) -> esto no afecta los datos
+			agregar el campo()->nullable() en up y eliminarlo en down(dropColumn('campo'))
+			realizar migrate
+			-----
+			realizar un rollback
+			mover el campo()->after('mail') // buscar todos los modificadores
+			realizar un migrate
+
+		migrate:refresh --> primero hacer rollback y luego migrate (elimina datos)
+
+
+	Arquitectura REST
+		REpresentational State Transfer -> definen el comportamiento entre cliente y servidores utilizando recursos. Un recurso es infomración de la BD, se trata de definir URL de manera específica que responde a direfentes tipos de peticiones HTTP (métodos)
+
+		Los navegadores solo reconocen POST y GET, para los demas métodos enviaremos un campo hidden con el nombre del método
+
+		make:controller -h 
+		make:controller --resource --> todos los métodos de un recurso
+
+		crear las rutas
+			en los nombres usar la convención nombre_recurso.método (mensajes.create)
+
+
+
+
+
