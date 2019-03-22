@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 class ControladorEjemplo extends Controller
 {
     public function home(){
-        return view('home');
+        $html = "<h1>Esto es un html</h1>";
+        $script ="<script>alert('hola este es un mesaje peligroso');</script>";
+
+        return view('home',compact('html','script'));
     }
 
     public function contacto(){
@@ -30,7 +33,7 @@ class ControladorEjemplo extends Controller
             [
                 'nombre' => 'required',
                 'email' => 'email',
-                'mensaje' => 'min:5'
+                'mensaje' => 'min:5|max:100'
             ]
         );
         // return $request->input('nombre');
