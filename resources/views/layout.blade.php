@@ -10,13 +10,13 @@
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/themify-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/flag-icon.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/cs-skin-elastic.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/jqvmap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/themify-icons.css">
+    <link rel="stylesheet" href="/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="/css/jqvmap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/estilos.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
@@ -49,7 +49,7 @@
                         <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-puzzle-piece"></i><a href="{{ route('medicos.create') }}">Alta</a></li>
                             <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Baja</a></li>
-                            <li><i class="fa fa-bars"></i><a href="ui-tabs.html">Lista</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{ route('medicos.index') }}">Lista</a></li>
                             <li><i class="fa fa-share-square-o"></i><a href="ui-social-buttons.html">Social Buttons</a></li>
                             <li><i class="fa fa-id-card-o"></i><a href="ui-cards.html">Cards</a></li>
                             <li><i class="fa fa-exclamation-triangle"></i><a href="ui-alerts.html">Alerts</a></li>
@@ -276,18 +276,18 @@
 
     <!-- Right Panel -->
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
 
 
-    <script src="vendors/chart.js/dist/Chart.bundle.min.js"></script>
+    {{-- <script src="vendors/chart.js/dist/Chart.bundle.min.js"></script>
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/widgets.js"></script>
     <script src="vendors/jqvmap/dist/jquery.vmap.min.js"></script>
     <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-    <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script> --}}
 
 
 </body>

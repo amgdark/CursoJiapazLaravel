@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\MedicosRequest;
+
 use DB;
 class MedicosController extends Controller
 {
@@ -13,7 +15,8 @@ class MedicosController extends Controller
      */
     public function index()
     {
-        //
+        $medicos = DB::table('medicos')->get();
+        return view('medicos.index',compact('medicos'));
     }
 
     /**
@@ -32,18 +35,8 @@ class MedicosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MedicosRequest $request)
     {
-        $this->validate($request,
-        [
-            'nombre' => 'required|min:5',
-            'app' => 'required|min:5',
-            'apm' => 'required|min:5',
-            'dir' => 'required|min:5',
-            'tel' => 'required|min:5',
-            'esp' => 'required|min:5',
-            'edad' => 'digits_between:1,3'
-        ]);
         DB::table('medicos')->insert([
             'nombre' => $request->input('nombre'),
             'apellido_pat' => $request->input('app'),
@@ -55,7 +48,7 @@ class MedicosController extends Controller
             'especialidad' => $request->input('esp'),
         ]);
 
-        redirect()->route('home');
+        return redirect()->route('medicos.index');
     }
 
     /**
@@ -66,7 +59,9 @@ class MedicosController extends Controller
      */
     public function show($id)
     {
-        //
+        $medico = DB::table('medicos')->where('id', $id)->first();
+
+        return view('medicos.show',compact('medico'));
     }
 
     /**
@@ -77,7 +72,9 @@ class MedicosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $medico = DB::table('medicos')->where('id', $id)->first();
+        return view('medicos.edit',compact('medico'));
+
     }
 
     /**
@@ -87,9 +84,22 @@ class MedicosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MedicosRequest $request, $id)
     {
-        //
+        $medico = DB::table('medicos')->where('id', $id)->update(
+            [
+                'nombre' => $request->input('nombre'),
+                'apellido_pat' => $request->input('app'),
+                'apellido_mat' => $request->input('apm'),
+                'direccion' => $request->input('dir'),
+                'telefono' => $request->input('tel'),
+                'celular' => $request->input('cel'),
+                'edad' => $request->input('edad'),
+                'especialidad' => $request->input('esp'),
+            ]
+        );
+        return redirect()->route('home');
+
     }
 
     /**
@@ -100,6 +110,7 @@ class MedicosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $medico = DB::table('medicos')->where('id', $id)->delete();
+        return redirect()->route('medicos.index');
     }
 }
