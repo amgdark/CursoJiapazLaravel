@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MailEjemplo;
 
 class ControladorEjemplo extends Controller
 {
@@ -29,7 +31,7 @@ class ControladorEjemplo extends Controller
         //     return "No tiene  nombre";
         // }
 
-        $this->validate($request,
+        $mensaje = $this->validate($request,
             [
                 'nombre' => 'required',
                 'email' => 'email',
@@ -37,6 +39,9 @@ class ControladorEjemplo extends Controller
             ]
         );
         // return $request->input('nombre');
+
+        Mail::to('amg.dark@gmail.com')->queue(new MailEjemplo($mensaje));
         return $request->all();
+
     }
 }

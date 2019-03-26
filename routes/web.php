@@ -15,3 +15,6 @@ Route::get('/medicos/{id}/edit','MedicosController@edit')->name('medicos.edit');
 Route::put('/medicos/{id}','MedicosController@update')->name('medicos.update');
 Route::delete('/medicos/{id}','MedicosController@destroy')->name('medicos.destroy');
 
+Route::resource('pacientes', 'PacientesController');
+
+

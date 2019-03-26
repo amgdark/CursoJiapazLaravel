@@ -41,7 +41,7 @@
             </div>
             <div class="form-group">
                 <label for="edad">Edad</label>
-                <input name="edad" class="form-control"
+                <input type="number" min="1" max="130" name="edad" class="form-control"
                 value="{{ (@old('edad')!=null)?@old('edad'):$medico->edad}}">
                 {!! $errors->first('edad','<span class="error">:message</span>') !!}
             </div>

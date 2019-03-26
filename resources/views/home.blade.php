@@ -1,9 +1,5 @@
 @extends('layout')
 
-@section('titulo')
-    Home
-@endsection
-
-@section('contenido')
-    <h1>Home</h1>
+@section('contentido')
+<h1>Bienvenido al sistema</h1>
 @endsection

@@ -98,7 +98,7 @@ class MedicosController extends Controller
                 'especialidad' => $request->input('esp'),
             ]
         );
-        return redirect()->route('home');
+        return redirect()->route('medicos.index');
 
     }
 

@@ -88,5 +88,76 @@ Base de datos:
 
 
 
+Reestablecer la cuenta de root de mysql
+	sudo service mysql stop
+	sudo mysqld_safe --skip-grant-tables --skip-networking &
+	mysql -u root
+	FLUSH PRIVILEGES;
+	CREATE USER 'root'@'%' IDENTIFIED BY 'root';
+	GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+	exit;
+	fg
+	control+c
+	sudo service start mysql
+	mysql -u root -p
 
 
+
+ORM
+Object-Relational Mapping
+ 
+Tabla = medicos -> Objeto = Medico 
+
+make:model -> se nombran igual a la tabla asociada pero en singular y con Mayuscula la primera
+
+Index -> importar modelo App\Medico
+
+	si el nombre de la tabla no va conforme a las especificación se agrega en el modelo -> protected $tabla="nombre"
+
+	Medicos::all()
+	Medicos::find()
+	Medicos::findOrfail()
+	$medico->update()
+	$medico->delete()
+		Personalizar los errores -> crear dir errors en views -> 404.blade.php
+
+
+Login:
+
+	make:auth -> genera rutas, controlador y vistas para el registro, login y reestablecer contraseñas
+		-> revisar las rutas creadas, como personalizar
+		-> revisar controladores -> los traits utilizados, sobrescribir algún método
+		-> revisar views, modificar
+		-> agregar middleware auth para redireccionar peticiones si no estás logueado
+		-> agregar links de logout a layaout -> sobreescribir el método loggedOut para redireccionar a login
+
+ 
+
+Enviar un mail
+
+	Después de validar y guardar en la BD, se crea un FACADE de MAIL --> Illuminate\Support\Facades\Mail;
+	make:mail MailRecibido -> lo crea en app/mail ->método build para settear la vista (crear carpeta mails en views)
+	Mail::to('example@asda.es')->send(new Mailable)
+
+	Configurar credenciales de correo en .env
+	Para confgigura from, se puede hacer en config/mail.php o en el mismo .env
+	Subject puede ser una propiedad del Mailable -> public $subject=""
+	Se pueden enviar parámetros por medio del Mailable  -> new MailRecibido($mensaje), la propiedad dentro del mailable debe ser publica y se settea por medio del constructor
+
+	
+Roles:
+	En la migración de usuarios, se agrega un campo para la llave ($table->integer('role_id'))
+	Crear modelo de Role junto con su. migración -> make:model Role -m
+		string('clave')->unique() //admin
+		string('nombre') //Administrador
+
+
+	Model User
+		crear funcion para validar el rol
+		crear funcion role() para asignar la llave foranea --> return $this->belongsTo(Role:class)
+
+
+
+
+
+MAGA801121HZSRNL07

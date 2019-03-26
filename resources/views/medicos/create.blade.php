@@ -34,18 +34,18 @@
     </div>
     <div class="form-group">
         <label for="edad">Edad</label>
-        <input name="edad" class="form-control" id="edad" cols="30" rows="10">{{@old('edad')}}</textarea>
+        <input type="number" min="1" max="130" name="edad" class="form-control" id="edad" value="{{@old('edad')}}">
         {!! $errors->first('edad','<span class="error">:message</span>') !!}
     </div>
     <div class="form-group">
         <label for="dir">Dirección</label>
-        <input type="dir" class="form-control" name="dir" id="dir" value="{{@old('dir')}}">
+        <input type="text" class="form-control" name="dir" id="dir" value="{{@old('dir')}}">
 
         {!! $errors->first('dir','<span class="error">La dirección es requerida</span>') !!}
     </div>
     <div class="form-group">
         <label for="esp">Especialidad</label>
-        <input type="esp" class="form-control" name="esp" id="esp" value="{{@old('esp')}}">
+        <input type="text" class="form-control" name="esp" id="esp" value="{{@old('esp')}}">
 
         {!! $errors->first('esp','<span class="error">:message</span>') !!}
     </div>
