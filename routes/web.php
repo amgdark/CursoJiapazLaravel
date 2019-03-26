@@ -18,3 +18,7 @@ Route::delete('/medicos/{id}','MedicosController@destroy')->name('medicos.destro
 Route::resource('pacientes', 'PacientesController');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

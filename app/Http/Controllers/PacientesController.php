@@ -15,7 +15,7 @@ class PacientesController extends Controller
      */
     public function index()
     {
-        $pacientes = Paciente::all();
+        $pacientes = Paciente::paginate(5);
         return view('pacientes.index',compact('pacientes'));
     }
 
@@ -37,25 +37,8 @@ class PacientesController extends Controller
      */
     public function store(PacientesRequest $request)
     {
-        // $paciente = new Paciente();
-        // $paciente->nombre = $request->input('nombre');
-        // $paciente->apellido_pat = $request->input('app');
-        // $paciente->apellido_mat = $request->input('apm');
-        // $paciente->curp = $request->input('curp');
-        // $paciente->fecha_nac = $request->input('fecha_nac');
-        // $paciente.save();
-
-        // Paciente::create([
-        //     'nombre' => $request->input('nombre'),
-        //     'nombre' => $request->input('nombre'),
-        //     'nombre' => $request->input('nombre'),
-        //     'nombre' => $request->input('nombre'),
-
-        // ]);
-
         Paciente::create($request->all());
         return redirect()->route('pacientes.index');
-
     }
 
     /**
@@ -66,7 +49,8 @@ class PacientesController extends Controller
      */
     public function show($id)
     {
-
+        $paciente = Paciente::findOrFail($id);
+        return view('pacientes.show', compact('paciente'));
     }
 
     /**
@@ -77,6 +61,8 @@ class PacientesController extends Controller
      */
     public function edit($id)
     {
+        $paciente = Paciente::findOrFail($id);
+        return view('pacientes.edit',compact('paciente'));
 
     }
 
@@ -89,7 +75,11 @@ class PacientesController extends Controller
      */
     public function update(PacientesRequest $request, $id)
     {
-
+        $paciente = Paciente::findOrFail($id);
+        $paciente->update($request->all());
+        return redirect()
+            ->route('pacientes.index')
+            ->with('info','Se actualizó el paciente de manera correcta');
     }
 
     /**
@@ -100,6 +90,9 @@ class PacientesController extends Controller
      */
     public function destroy($id)
     {
-
+        $paciente = Paciente::findOrFail($id)->delete();
+        return redirect()
+            ->route('pacientes.index')
+            ->with('info','Se eliminó el paciente de manera correcta');
     }
 }

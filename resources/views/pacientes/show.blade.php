@@ -18,12 +18,12 @@
         <td>{{$paciente->apellido_pat}} {{$paciente->apellido_mat}}</td>
     </tr>
     <tr>
-        <td>Teléfono</td>
+        <td>CURP</td>
         <td>{{$paciente->curp}}</td>
     </tr>
     <tr>
-        <td>Celular</td>
-        <td>{{$paciente->fecha_nac}}</td>
+        <td>Fecha de nacimiento</td>
+        <td>{{ date('d-m-Y', strtotime($paciente->fecha_nac)) }}</td>
     </tr>
 </table>
 

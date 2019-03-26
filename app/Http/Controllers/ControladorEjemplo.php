@@ -24,12 +24,7 @@ class ControladorEjemplo extends Controller
     }
 
     public function procesa(Request $request){
-        // if ($request->input('nombre') != null) {
-        //     return "Si tiene nombre";
-        // }
-        // else {
-        //     return "No tiene  nombre";
-        // }
+
 
         $mensaje = $this->validate($request,
             [
@@ -41,7 +36,7 @@ class ControladorEjemplo extends Controller
         // return $request->input('nombre');
 
         Mail::to('amg.dark@gmail.com')->queue(new MailEjemplo($mensaje));
-        return $request->all();
+        return "Mensaje enviado";
 
     }
 }
