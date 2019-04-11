@@ -1,4 +1,6 @@
 <?php
+App::setLocale('es');
+
 Route::get('/', 'ControladorEjemplo@home')->name('home');
 
 Route::get('/contactos', 'ControladorEjemplo@contacto')->name('contacto');
@@ -17,8 +19,5 @@ Route::delete('/medicos/{id}','MedicosController@destroy')->name('medicos.destro
 
 Route::resource('pacientes', 'PacientesController');
 
-
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

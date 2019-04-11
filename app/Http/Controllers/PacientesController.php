@@ -8,6 +8,13 @@ use App\Paciente;
 
 class PacientesController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+        $this->middleware('rol:admin');
+        // $this->middleware('auth',['only'=>['create']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

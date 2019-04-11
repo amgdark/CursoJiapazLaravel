@@ -8,6 +8,11 @@ use App\Http\Requests\MedicosRequest;
 use DB;
 class MedicosController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+        // $this->middleware('auth',['only'=>['create']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

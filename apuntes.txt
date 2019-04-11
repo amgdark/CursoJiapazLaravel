@@ -121,6 +121,7 @@ Index -> importar modelo App\Medico
 	$medico->delete()
 		Personalizar los errores -> crear dir errors en views -> 404.blade.php
 
+$request['fecha_nac'] = date('Y-m-d', strtotime($request->input('fecha_nac')));
 
 Login:
 
@@ -151,13 +152,121 @@ Roles:
 		string('clave')->unique() //admin
 		string('nombre') //Administrador
 
+		si queremos ver todos los usuarios que tiene un rol, debemos crear una función
+			function user(){
+				return $this->hasOne(User::class); ->hasMany()
+			}
+
 
 	Model User
-		crear funcion para validar el rol
-		crear funcion role() para asignar la llave foranea --> return $this->belongsTo(Role:class)
+		crear funcion para validar el rol -> tieneRol($rol) return ($this->role->name === $rol)?true:false;
+		crear funcion role() para asignar la llave foranea --> return $this->belongsTo(Role:class), relación
+		visualizar el rol de un usuario -> user->role->nombre_rol;
+
+	Middleware
+		Crear un middleware -> make:middleware Roles
+		En la función handle agregar el parámetro rol
+			if (auth()->user()->tieneRol($rol))
+				return $next($request);
+			return redirect()
+
+		Agregar al kernel con un nombre asociado
+
+	Contralador:
+		Agregar el middleware Roles en el constructor, $this->middleware('roles:admin,'['only'=>'index'])
+
+	Crear una ruta para probar las relaciones hasOne y hasMany
+
+	ManyToMany
+		de la tabla user quitar $table->integer('role_id') --> fresh
+
+
+Paginación
+	Regresamos del index toda la info en forma de json
+	para regresar la paginación en lugar de get se usa paginate(cantidad) o simplePaginate(cantidad)
+	para mostrar los links de navegación es en la vista después de for, {!! $registros->links() !!}
 
 
 
 
 
-MAGA801121HZSRNL07
+Personalizar Nombre de campos en los mensajes de error
+	es -> validation -> attributes
+Traducción de strings estáticos
+	es -> crear es.json {'Send':"Enviar"} -> @('Send')
+	App:setLocale('es')
+
+	Cambiar los verbos del resource AppServiceProvider->boot(Route::resourceVerbs([
+             'create' => __('create'),
+             'edit' => __('edit'),
+         ]);)
+
+
+Sockets
+	Ver imganes
+	Crear un evento make:event MedicoAgregado
+	camiar el canal a publico PrivateChannel -> Channel, implementar la interfaz ShouldBroadcast
+	en el controlador de Médicos@store lanzar un evento event(new MensajeRecibido($mensjae))
+
+	config->broadcasting.php poner el driver redis
+
+	instalar el paquete predis/predis -> composer require predis/predis
+
+
+Angular
+	sudo apt-get update
+	sudo apt-get install curl
+	Instalar Node
+		curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
+		sudo apt-get install -y nodejs
+	Instalar TypeScript
+		sudo npm install -g typescript
+	Instalar angular-cli
+		sudo npm install -g @angular/cli
+
+	Instalar plugins visual code
+
+
+	Sincronizar www-data vagrant
+
+	TypeScript
+		Ventajas
+		tsc archivo
+		tsc archivo -w
+		tsc -init
+		tsc -w
+
+		let VS var
+		const 
+		tipos de datos nomVar:string
+			number,Date, any, Objetos -> tiene que tener la misma estructura
+		template literales `` agregar código js ${ alert('hola') }
+		funciones, parámetros obligatorios y opcionales nombre:string="Invitado", apellido?:string
+		funciones flecha vs funciones normales
+		Extrer de objectos let objeto={nombre:"hola"....}, let {nombre,...} = objeto 
+		Extrer de arreglos let colores=["azul","morado"....], let [color1, color2,...] = colores 
+
+		Clases, propiedades, constructores, funciones, constructor(public)
+
+		promesas, dan la posibilidad de realizar una tarea asincrona
+
+		decoradores
+			Son funciones que extienden la funcionalidad de una clase, propiedad, función, parámetro etc.
+
+
+	Angular
+		Componentes son pequeñas clases que cumplen con una función específica tienen un decorador
+			navbar
+			sidebar
+			footer
+			responsable de mostrar contenido
+
+
+	Directivas estructurales
+		Son instrucciones que le dicen al HTML como se tiene que comportar
+			ngif
+			ngfor
+
+
+
+
