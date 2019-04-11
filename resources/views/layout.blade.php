@@ -10,13 +10,13 @@
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/themify-icons.css">
-    <link rel="stylesheet" href="/css/flag-icon.min.css">
-    <link rel="stylesheet" href="/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="/css/jqvmap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/flag-icon.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/cs-skin-elastic.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/jqvmap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/estilos.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
@@ -34,8 +34,8 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src="/images/logo.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="/images/logo2.png" alt="Logo"></a>
+                <a class="navbar-brand" href="./"><img src="{{ asset('/images/logo.png') }}" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="./"><img src="{{ asset('/images/logo2.png') }}" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -169,7 +169,7 @@
                             <div class="dropdown-menu" aria-labelledby="message">
                                 <p class="red">You have 4 Mails</p>
                                 <a class="dropdown-item media bg-flat-color-1" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="/images/avatar/1.jpg"></span>
+                                <span class="photo media-left"><img alt="avatar" src="{{ asset('/images/avatar/1.jpg')}}"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Jonathan Smith</span>
                                     <span class="time float-right">Just now</span>
@@ -177,7 +177,7 @@
                                 </span>
                             </a>
                                 <a class="dropdown-item media bg-flat-color-4" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="/images/avatar/2.jpg"></span>
+                                <span class="photo media-left"><img alt="avatar" src="{{ asset('/images/avatar/2.jpg')}}"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Jack Sanders</span>
                                     <span class="time float-right">5 minutes ago</span>
@@ -185,7 +185,7 @@
                                 </span>
                             </a>
                                 <a class="dropdown-item media bg-flat-color-5" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="/images/avatar/3.jpg"></span>
+                                <span class="photo media-left"><img alt="avatar" src="{{ asset('/images/avatar/3.jpg')}}"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Cheryl Wheeler</span>
                                     <span class="time float-right">10 minutes ago</span>
@@ -193,7 +193,7 @@
                                 </span>
                             </a>
                                 <a class="dropdown-item media bg-flat-color-3" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="/images/avatar/4.jpg"></span>
+                                <span class="photo media-left"><img alt="avatar" src="{{ asset('/images/avatar/4.jpg')}}"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Rachel Santos</span>
                                     <span class="time float-right">15 minutes ago</span>
@@ -208,7 +208,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="/images/admin.jpg" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="{{ asset('/images/admin.jpg')}}" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
@@ -281,10 +281,10 @@
 
     <!-- Right Panel -->
 
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/popper.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="{{ asset ('/js/jquery.min.js') }}"></script>
+    <script src="{{ asset ('/js/popper.min.js') }}"></script>
+    <script src="{{ asset ('/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset ('/js/main.js') }}"></script>
 
 
     {{-- <script src="vendors/chart.js/dist/Chart.bundle.min.js"></script>
